@@ -16,14 +16,14 @@ public interface MemberMapper {
 			+ "values (#{userid}, #{userpw}, #{username}, #{email})")
 	public void create(MemberVo vo) throws SQLException;
 	
-	@Select("select userid, userpw, username, email, regdate, updatedate "
+	@Select("select userid, userpw, username, email, regdate, upddate "
 			+ "from t_member "
 			+ "where userid = #{userid}")
 	public MemberVo read(String userid) throws SQLException;
 	
 	@Update("update t_member "
 			+ "set userpw = #{userpw}, username = #{username}, "
-			+ "email = #{email}, updatedate = sysdate "
+			+ "email = #{email}, upddate = sysdate "
 			+ "where userid = #{userid}")
 	public int update(MemberVo vo) throws SQLException;
 	

@@ -33,21 +33,23 @@ public class DemoApplicationTests {
 	 * H2 설정 후 DB Connection 테스트
 	 */
 	@Test
-	public void testConnection() throws Exception {
+	public void testConnection() {
 		assertThat(dataSource, is(notNullValue()));
 		
-		Connection con = dataSource.getConnection();
-		assertThat(con, is(notNullValue()));
-		System.out.println(con);
+		try (Connection con = dataSource.getConnection()) {
+			assertThat(con, is(notNullValue()));
+			System.out.println(con);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
-		con.close();
 	}
 	
 	/*
 	 * MyBatis 설정 후 Session 테스트
 	 */
 	@Test
-	public void testSqlSession() throws Exception {
+	public void testSqlSession() {
 		assertThat(sqlSession, is(notNullValue()));
 		System.out.println(sqlSession);
 	}
