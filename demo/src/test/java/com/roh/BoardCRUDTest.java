@@ -114,7 +114,7 @@ public class BoardCRUDTest {
 		assertThat(mapper.getCount(), is(2));
 		
 	}
-
+	
 	private void checkSameBoard(BoardVo vo1, BoardVo vo2) {
 		assertThat(vo1.getTitle(), is(vo2.getTitle()));
 		assertThat(vo1.getContent(), is(vo2.getContent()));

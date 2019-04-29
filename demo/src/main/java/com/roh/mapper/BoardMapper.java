@@ -1,6 +1,7 @@
 package com.roh.mapper;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
@@ -14,13 +15,13 @@ public interface BoardMapper {
 
 	public void create(BoardVo vo) throws SQLException;
 
-	public BoardVo read(Integer bno) throws Exception;
+	public BoardVo read(Integer bno) throws SQLException;
 
-	public int update(BoardVo vo) throws Exception;
+	public int update(BoardVo vo) throws SQLException;
 
-	public int delete(Integer bno) throws Exception;
+	public int delete(Integer bno) throws SQLException;
 
-//	public List<BoardVo> listAll() throws Exception;
+	public List<BoardVo> listAll() throws SQLException;
 //
 //	public List<BoardVo> listPage(int page) throws Exception;
 //

@@ -9,7 +9,7 @@ public class MemberVo {
 	private String username;
 	private String email;
 	private Date regdate;
-	private Date updatedate;
+	private Date upddate;
 
 	public MemberVo() {
 	}
@@ -60,18 +60,18 @@ public class MemberVo {
 		this.regdate = regdate;
 	}
 
-	public Date getUpdatedate() {
-		return updatedate;
+	public Date getUpddate() {
+		return upddate;
 	}
 
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
+	public void setUpddate(Date upddate) {
+		this.upddate = upddate;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberVo [userid=" + userid + ", userpw=" + userpw + ", username=" + username
-				+ ", email=" + email + ", regdate=" + regdate + ", updatedate=" + updatedate + "]";
+				+ ", email=" + email + ", regdate=" + regdate + ", upddate=" + upddate + "]";
 	}
 
 }

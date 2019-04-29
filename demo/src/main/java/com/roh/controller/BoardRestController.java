@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BoardRestController {
 
-	@RequestMapping("/boards")
-	public String home() {
-		
-		return "Hello";
-	}
+//	@RequestMapping("/boards")
+//	public String home() {
+//		
+//		return "Hello";
+//	}
 	
 }

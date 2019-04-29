@@ -12,3 +12,18 @@ create table t_board (
 
 insert into t_board (title, content, writer) 
 values ('test title', 'test content', 'tester');
+insert into t_board (title, content, writer) 
+values ('test title2', 'test content2', 'tester2');
+insert into t_board (title, content, writer) 
+values ('테스트 제목', '테스트 내용', '테스트 작가');
+
+insert into t_board (title, content, writer)
+(select title, content, writer from t_board);
+insert into t_board (title, content, writer)
+(select title, content, writer from t_board);
+insert into t_board (title, content, writer)
+(select title, content, writer from t_board);
+insert into t_board (title, content, writer)
+(select title, content, writer from t_board);
+insert into t_board (title, content, writer)
+(select title, content, writer from t_board);
