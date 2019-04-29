@@ -38,7 +38,7 @@
 					<c:forEach items="${list }" var="boardVo">
 						<tr>
 							<td>${boardVo.bno }</td>
-							<td><a href="boards/${boardVo.bno }">${boardVo.title }</a></td>
+							<td><a href="boards/${boardVo.bno}${pageMaker.makeQuery(pageMaker.cri.page)}">${boardVo.title }</a></td>
 							<td>${boardVo.writer }</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.regdate }"/></td>
 							<td><span class="badge bg-red">${boardVo.viewcnt }</span></td>
@@ -47,6 +47,26 @@
 					</table>
 				</div>
 			</div>
+			<!-- paging point -->
+			<div class="text-center">
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li><a href="boards${pageMaker.makeQuery(pageMaker.startPage - 1)}">&laquo;</a></li>
+					</c:if>
+					
+					<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+						<li 
+							<c:out value="${pageMaker.cri.page == idx ? 'class =active' : ''}" />>
+							<a href="boards${pageMaker.makeQuery(idx)}">${idx}</a>
+						</li>
+					</c:forEach>
+					
+					<c:if test="${pageMaker.next}">
+						<li><a href="boards${pageMaker.makeQuery(pageMaker.endPage + 1)}">&raquo;</a></li>
+					</c:if>
+				</ul>
+			</div>
+			<!-- /.text-center -->
 		</div>
 		<!-- /.col (left) -->
 	</div>

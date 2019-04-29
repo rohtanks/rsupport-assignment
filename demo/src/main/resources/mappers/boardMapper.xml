@@ -11,25 +11,25 @@
 	
 	<insert id="create" parameterType="com.roh.domain.BoardVo">
 	INSERT INTO t_board (
-		title,
-		content,
-		writer
+		title
+		,content
+		,writer
 	) VALUES (
-		#{title},
-		#{content},
-		#{writer}
+		#{title}
+		,#{content}
+		,#{writer}
 	)
 	</insert>
 
 	<select id="read" resultType="BoardVO">
 	SELECT 
-		bno,
-		title,
-		content,
-		writer,
-		regdate,
-		upddate,
-		viewcnt
+		bno
+		,title
+		,content
+		,writer
+		,regdate
+		,upddate
+		,viewcnt
 	  FROM
 	  	t_board
 	 WHERE
@@ -56,19 +56,29 @@
 	 	bno = #{bno}
 	</delete>
 	
-	<select id="listAll" resultType="BoardVO">
+	<select id="listAll" parameterType="Criteria" resultType="BoardVo">
 	SELECT
-		bno,
-		title,
-		content,
-		writer,
-		regdate,
-		upddate,
-		viewcnt
+		bno
+		,title
+		,content
+		,writer
+		,regdate
+		,upddate
+		,viewcnt
+	  FROM
+		t_board
+	 WHERE
+	 	bno > 0
+	 ORDER BY bno DESC, regdate DESC
+	 LIMIT #{startNum}, #{perPageNum}
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	SELECT
+		count(*)
 	  FROM
 	  	t_board
 	 WHERE
 	 	bno > 0
-	 ORDER BY bno DESC, regdate DESC
 	</select>
 </mapper>

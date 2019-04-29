@@ -1,19 +1,24 @@
 package com.roh.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.roh.domain.BoardVo;
+import com.roh.domain.Criteria;
+import com.roh.domain.PageMaker;
 
 public interface BoardService {
 
-	public void regist(BoardVo vo) throws SQLException;
+	public void regist(BoardVo vo) throws Exception;
 	
-	public List<BoardVo> listAll() throws SQLException;
+	public List<BoardVo> listAll(Criteria cri) throws Exception;
 	
-	public BoardVo read(Integer bno) throws SQLException;
+	public BoardVo read(Integer bno) throws Exception;
 
-	public int remove(Integer bno) throws SQLException;
+	public int remove(Integer bno) throws Exception;
 
-	public int modify(BoardVo vo) throws SQLException;
+	public int modify(BoardVo vo) throws Exception;
+	
+	public int countTotalNum() throws Exception;
+	
+	public PageMaker makePage(Criteria cri) throws Exception;
 }

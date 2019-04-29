@@ -14,7 +14,7 @@
 		$(".btn-primary").on("click", function(){
 			/* action 을 지정해주지 않으면 GET 방식으로 된 URL에 있는 파라미터가 남아서 값이 중복된다 */
 			/* formObj.attr("action", "post"+bnoVal); */
-			formObj.attr("action", bnoVal);
+			formObj.attr("action", "/boards/" + bnoVal);
 			formAction.val("put");
 			formObj.submit();
 		});
@@ -23,8 +23,7 @@
 		$(".btn-warning").on("click", function(){
 			/* self.location = "board/listAll"; */
 			/* history.back(); */
-			self.location = "list?page=${cri.page}&perPageNum=${cri.perPageNum}"
-					+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+			self.location = "/boards/" + bnoVal + "?page=${cri.page}&perPageNum=${cri.perPageNum}";
 		});
 		
 	});
@@ -53,10 +52,6 @@
 							<p><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.regdate }"/></p>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">작성자</label>
-							<input type="text" name="writer" class="form-control" value="${boardVo.writer }">
-						</div>
-						<div class="form-group">
 							<label for="exampleInputEmail1">최종 수정일</label>
 							<p><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.upddate }"/></p>
 						</div>
@@ -64,11 +59,18 @@
 							<label for="exampleInputEmail1">조회수 : ${boardVo.viewcnt }</label>
 						</div>
 						<div class="form-group">
+							<label for="exampleInputEmail1">작성자</label>
+							<input type="text" name="writer" class="form-control" value="${boardVo.writer }">
+						</div>
+						<div class="form-group">
 							<label for="exampleInputPassword1">내용</label>
 							<textarea class="form-control" name="content" rows="3">${boardVo.content }</textarea>
 						</div>
 					</div>
 					<input type="hidden" name="_method" value="" />
+					<!-- 페이징 유지 위해 필요한 정보 -->
+					<input type="hidden" name="page" value="${cri.page}"/>
+					<input type="hidden" name="perPageNum" value="${cri.perPageNum}"/>
 				</form>
 				
 				<div class="box-footer">
@@ -83,7 +85,5 @@
 	<!-- /.row -->
 </section>
 <!-- /.content -->
-
-
 
 <%@ include file="../include/footer.jsp"%>
