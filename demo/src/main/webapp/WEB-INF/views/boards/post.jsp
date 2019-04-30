@@ -1,6 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
+<script>
+	$(document).ready(function() {
+		
+		$('form').on('submit', function(event) {
+            
+            var $input = $(this).find('input');
+            
+            for (var i = 0; i < $input.length; i++) {
+    			if("" == $($input[i]).val() || null == $($input[i]).val()) {
+    				var txtName = $($input[i]).attr("name");
+    	
+    				showAlert(txtName);
+    	
+		            event.preventDefault();
+    				return;
+    			}
+    		}
+            
+        });
+		
+	});
+
+	function showAlert(txtName){
+		$("#" + txtName).focus();
+	}
+
+</script>
 
 <!-- Main content -->
 <section class="content">
