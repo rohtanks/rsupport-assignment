@@ -15,7 +15,8 @@
     				showAlert(txtName);
     	
 		            event.preventDefault();
-    				return;
+    				
+		            return;
     			}
     		}
             
