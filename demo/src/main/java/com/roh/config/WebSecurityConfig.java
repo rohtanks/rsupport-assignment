@@ -38,7 +38,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		// 모두에게 응답
 				.antMatchers("/", "/boards", "/members/regist", "/resources/**").permitAll()
-				.antMatchers("/boards/{bno}").hasRole("ANONYMOUS")
 				.antMatchers("/boards/post").hasRole("USER")
 				.antMatchers(HttpMethod.PUT).hasRole("USER")
 				.antMatchers(HttpMethod.DELETE, "/boards/{bno}").hasRole("USER")
