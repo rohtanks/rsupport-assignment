@@ -9,22 +9,26 @@
   
 ## 2. Maven 빌드
 
-  <img width="674" alt="스크린샷 2019-05-01 오전 5 42 49" src="https://user-images.githubusercontent.com/20741709/56992132-52eccc00-6bd4-11e9-822a-9c06ddcbf378.png">
+  
 ###  2-1. demo(프로젝트명) 우클릭  
 
 ###  2-2. Run As -> 5 Maven build...
 
-<img width="691" alt="스크린샷 2019-05-01 오전 5 32 06" src="https://user-images.githubusercontent.com/20741709/56992287-a7904700-6bd4-11e9-8e66-3ce4164f7041.png">
+<img width="674" alt="스크린샷 2019-05-01 오전 5 42 49" src="https://user-images.githubusercontent.com/20741709/56992132-52eccc00-6bd4-11e9-822a-9c06ddcbf378.png">
+
 ###  2-3. 해당 내용 작성 후 실행  
 
        Goals: package -Dmaven.test.skip=true |  
        
        Profiles: 공란 |  
        
-       Run
+       Run  
+       
+<img width="691" alt="스크린샷 2019-05-01 오전 5 32 06" src="https://user-images.githubusercontent.com/20741709/56992287-a7904700-6bd4-11e9-8e66-3ce4164f7041.png">
 
+
+###  2-4. BUILD SUCCESS 확인 및 경로 확인  
 <img width="807" alt="스크린샷 2019-05-01 오전 5 36 31" src="https://user-images.githubusercontent.com/20741709/56992277-a2cb9300-6bd4-11e9-88da-66aaeddd64b2.png">
-###  2-4. BUILD SUCCESS 확인 및 경로 확인
 
 ## 3. war 파일 실행
 
