@@ -9,6 +9,12 @@
 	if (result == 'success') {
 		alert("처리가 완료되었습니다.");
 	}
+	
+	$(document).ready(function() {
+		$("#newBtn").on("click", function() {
+			self.location = "/boards/post";
+		});
+	});
 </script>
 
 <!-- Main content -->
@@ -20,6 +26,9 @@
 			<div class="box">
 				<div class="box-header with-border">
 					<h3 class="box-title">공지 목록</h3>
+				</div>
+				<div class="box-body">
+					<button id="newBtn" style="float: right">글쓰기</button>
 				</div>
 			</div>
 			<!-- insert point!! -->

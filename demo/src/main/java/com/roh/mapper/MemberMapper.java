@@ -1,6 +1,7 @@
 package com.roh.mapper;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -37,4 +38,16 @@ public interface MemberMapper {
 	
 	@Select("select count(*) from t_member")
 	public int getCount() throws SQLException;
+	
+	// Spring Security 인증에 사용될 메서드
+	@Select("select userid, userpw, username, email, regdate, upddate "
+			+ "from t_member "
+			+ "where userid = #{userid}")
+	public MemberVo findByUserid(String userid);
+	
+	@Select("select authority_name "
+			+ "from t_authority "
+			+ "where userid = #{userid}")
+	public List<String> readAuthorities(String userid);
+	
 }

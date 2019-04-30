@@ -6,7 +6,11 @@ create table t_member (
     username varchar(50) not null,
     email varchar(100),
     regdate timestamp default now(),
-    upddate timestamp default now()
+    upddate timestamp default now(),
+    isAccountNonExpired tinyint(1) default 1,
+    isAccountNonLocked tinyint(1) default 1,
+    isCredentialsNonExpired tinyint(1) default 1,
+    isEnabled tinyint(1) default 1
 );
 
 insert into t_member(userid, userpw, username, email) 

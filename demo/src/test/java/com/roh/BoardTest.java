@@ -1,6 +1,7 @@
 package com.roh;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.util.List;
@@ -18,6 +19,11 @@ import com.roh.domain.Criteria;
 import com.roh.domain.PageMaker;
 import com.roh.service.BoardService;
 
+/**
+ * 게시판 기능 테스트
+ * @author roh
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardTest {
@@ -60,6 +66,10 @@ public class BoardTest {
 		logger.info("*****************************");
 	}
 	
+	/**
+	 * 게시판 페이징 테스트
+	 * @throws Exception
+	 */
 	@Test
 	public void testPageCalculate() throws Exception {
 		Criteria cri = new Criteria();
@@ -111,6 +121,26 @@ public class BoardTest {
 		assertThat(pageMaker.getStartPage(), is(11));
 		assertThat(pageMaker.getEndPage(), is(20));
 		assertThat(pageMaker.getNext(), is(true));
+		assertThat(pageMaker.getPrev(), is(true));
+		
+		// negative
+		// 페이지 번호 7, 보여지는 페이지 갯수 5, 전체 데이터 81 경우
+		// 시작 페이지(startPage): 6
+		// 끝 페이지(endPage): 10이 아님
+		// 페이지 번호의 갯수(displayPageNum): 10이 아님
+		// 이후 페이지(next): false
+		// 이전 페이지(prev): true
+		cri = new Criteria();
+		cri.setPage(7);
+		pageMaker.setCri(cri);
+		pageMaker.setDisplayPageNum(5);
+		pageMaker.setTotalCount(81);
+		
+		logger.info(pageMaker.toString());
+		assertThat(pageMaker.getStartPage(), is(6));
+		assertThat(pageMaker.getEndPage(), is(not(10)));
+		assertThat(pageMaker.getDisplayPageNum(), is(not(10)));
+		assertThat(pageMaker.getNext(), is(false));
 		assertThat(pageMaker.getPrev(), is(true));
 		
 	}

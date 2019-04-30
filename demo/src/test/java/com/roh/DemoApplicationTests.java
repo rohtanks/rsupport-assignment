@@ -20,6 +20,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.roh.domain.MemberVo;
 
+/**
+ * DB 연결 관련 테스트
+ * @author roh
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
@@ -34,7 +39,7 @@ public class DemoApplicationTests {
 	public void contextLoads() {
 	}
 	
-	/*
+	/**
 	 * H2 설정 후 DB Connection 테스트
 	 */
 	@Test
@@ -43,17 +48,20 @@ public class DemoApplicationTests {
 		
 		try (Connection con = dataSource.getConnection()) {
 			assertThat(con, is(notNullValue()));
-			System.out.println(con);
+			System.out.println("Connection 객체: " + con);
 			
 			String url = con.getMetaData().getURL();
-			System.out.println(url);
-			System.out.println(con.getMetaData().getDriverName());
+			System.out.println("DB URL: " + url);
+			System.out.println("DB DRIVER: " + con.getMetaData().getDriverName());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
 	}
 	
+	/**
+	 * T_MEMBER 테이블 조회 테스트
+	 */
 	@Test
 	public void testGetTable() {
 		try (Connection con = dataSource.getConnection();
@@ -76,13 +84,13 @@ public class DemoApplicationTests {
 		}
 	}
 	
-	/*
+	/**
 	 * MyBatis 설정 후 Session 테스트
 	 */
 	@Test
 	public void testSqlSession() {
 		assertThat(sqlSession, is(notNullValue()));
-		System.out.println(sqlSession);
+		System.out.println("SqlSession: " + sqlSession);
 	}
 
 }

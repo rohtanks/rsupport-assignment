@@ -29,3 +29,6 @@ insert into t_board (title, content, writer)
 (select title, content, writer from t_board);
 insert into t_board (title, content, writer)
 (select title, content, writer from t_board);
+
+insert into t_board (title, content, writer) 
+values ('test title', 'test content', 'ahram1');

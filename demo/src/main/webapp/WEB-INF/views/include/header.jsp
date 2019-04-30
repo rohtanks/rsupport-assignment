@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,6 +29,30 @@
   </head>
       <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+		var formObj = $("form[role='toggleform']");
+		var formAction = formObj.find("input");
+		
+		console.log(formObj);
+		console.log(formAction);
+		
+		// 로그아웃
+		$("#btn-logout").on("click", function(){
+			formObj.attr("action", "/logout");
+			formObj.submit();
+		});
+		
+		// 로그인
+		$("#btn-login").on("click", function(){
+			formObj.attr("action", "/members/login")
+			.attr("method", "get");
+			formAction.remove();
+			formObj.submit();
+		});
+		
+	});
+    </script>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
       
@@ -243,7 +267,12 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="/resources/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">Alexander Pierce</span>
+                  <sec:authorize access="isAnonymous()">
+                  <span class="hidden-xs">로그인이 필요합니다</span>
+                  </sec:authorize>
+                  <sec:authorize access="isAuthenticated()">
+                  <span class="hidden-xs">로그인중입니다</span>
+                  </sec:authorize>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -272,7 +301,15 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <sec:authorize access="isAnonymous()">
+                    	<a href="#" class="btn btn-default btn-flat" id="btn-login">로그인</a>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<a href="#" class="btn btn-default btn-flat" id="btn-logout">로그아웃</a>
+					</sec:authorize>
+					<form role="toggleform" action="" method="post">
+					   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+					</form>
                     </div>
                   </li>
                 </ul>
