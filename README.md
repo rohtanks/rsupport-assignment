@@ -14,8 +14,11 @@
 ###  2-2. Run As -> 5 Maven build...
 
 <img width="691" alt="스크린샷 2019-05-01 오전 5 32 06" src="https://user-images.githubusercontent.com/20741709/56992287-a7904700-6bd4-11e9-8e66-3ce4164f7041.png">
-###  2-3. Goals: package -Dmaven.test.skip=true |
-       Profiles: 공란 |
+###  2-3. 해당 내용 작성 후 실행
+       Goals: package -Dmaven.test.skip=true |  
+       
+       Profiles: 공란 |  
+       
        Run
 
 <img width="807" alt="스크린샷 2019-05-01 오전 5 36 31" src="https://user-images.githubusercontent.com/20741709/56992277-a2cb9300-6bd4-11e9-88da-66aaeddd64b2.png">
