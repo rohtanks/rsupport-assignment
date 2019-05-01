@@ -23,7 +23,7 @@ Finish
   
 ###  2-1. demo(프로젝트명) 우클릭  
 
-###  2-2. Run As -> 5 Maven build...
+###  2-2. Run As -> Maven build...
 
 <img width="674" alt="스크린샷 2019-05-01 오전 5 42 49" src="https://user-images.githubusercontent.com/20741709/56992132-52eccc00-6bd4-11e9-822a-9c06ddcbf378.png">
 
@@ -50,7 +50,7 @@ Finish
        
 ## 4. 웹 브라우저 확인
 
-###  4-1. localhost:8182/boads  
+###  4-1. localhost:8182/boards  
 
 ###  4-2. login 정보
        ahram1/pw111  
