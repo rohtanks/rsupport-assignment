@@ -6,7 +6,18 @@
 
 
 ## 1. 프로젝트 로컬 환경으로 임포트
-  
+
+### 1-1. 메이븐 프로젝트 임포트
+
+![스크린샷 2015-05-19 오전 7 21 35](https://user-images.githubusercontent.com/20741709/57005375-96662b00-6c12-11e9-9aac-d11577df9d22.png)
+
+![스크린샷 2015-05-19 오전 7 28 55](https://user-images.githubusercontent.com/20741709/57005387-a4b44700-6c12-11e9-8f6a-5763951ac1e9.png)  
+Import -> Maven -> Check out Maven Projects from SCM
+
+![제목 없음](https://user-images.githubusercontent.com/20741709/57005496-73884680-6c13-11e9-8b9c-9b7f70404ea3.png)
+
+Finish
+
 ## 2. Maven 빌드
 
   
