@@ -1,6 +1,5 @@
 package com.roh.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,16 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.roh.service.MemberServiceImpl;
-
 // 클래스 설정하면 스프링 시큐리티가 제공하는 기본 설정을 덮어 씀
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	MemberServiceImpl service;
-	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/h2console/**");
@@ -61,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	/**
 	 * 패스워드 인코딩 설정
 	 * 평문으로 저장 위한 NoOpPasswordEncoder
+	 * PasswordEncoder 를 DI
 	 * @return
 	 */
 	@Bean
@@ -71,6 +66,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	/**
 	 * 패스워드 인코딩 설정
+	 * 스프링 시큐리티 5 이상 버전에서는
+	 * 기본적으로 BCryptPasswordEncoder 를 사용
+	 * DelegatingPasswordEncoder 를 사용하면
+	 * {id}암호화된 패스워드 형식으로 저장이 된
 	 * 
 	 * @return
 	 */
@@ -82,6 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	/**
 	 * 인메모리 테스트용도
+	 * User 를 생성
 	 * UserDetailsService 는 MemberService 가 구현해서 사용
 	 */
 //	@Bean

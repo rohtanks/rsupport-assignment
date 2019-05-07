@@ -5,6 +5,7 @@
 <%@ include file="../include/header.jsp"%>
 <script type="text/javascript">
 	var result = '${result}';
+	var error = '${error}';
 	
 	if (result == 'success') {
 		alert("처리가 완료되었습니다.");

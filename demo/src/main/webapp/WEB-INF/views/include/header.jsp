@@ -271,7 +271,7 @@
                   <span class="hidden-xs">로그인이 필요합니다</span>
                   </sec:authorize>
                   <sec:authorize access="isAuthenticated()">
-                  <span class="hidden-xs">로그인중입니다</span>
+                  <span class="hidden-xs"><sec:authentication property="principal.username"/> 로그인중입니다</span>
                   </sec:authorize>
                 </a>
                 <ul class="dropdown-menu">
@@ -298,7 +298,12 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
+                    <sec:authorize access="isAnonymous()">
+                      <a href="/members/regist" class="btn btn-default btn-flat">계정 생성</a>
+                    </sec:authorize>
+					<sec:authorize access="isAuthenticated()">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
+					</sec:authorize>
                     </div>
                     <div class="pull-right">
                     <sec:authorize access="isAnonymous()">

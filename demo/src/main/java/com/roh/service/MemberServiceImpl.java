@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,11 +18,12 @@ import com.roh.domain.MemberVo;
 import com.roh.mapper.MemberMapper;
 
 @Service
-public class MemberServiceImpl implements MemberService, UserDetailsService {
+public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	MemberMapper mapper;
 	
+	// 패스워드 암호화 객체
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
@@ -34,8 +36,13 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVo account = mapper.findByUserid(username);
-
+		
+		if (account == null) throw new UsernameNotFoundException(username);
+		
 		// UserDetails 타입으로 변환
+		// 간단히 username, password, role 만으로 로그인 테스트를 하기 위해 사용
+		// 상용에 적용하기 위해선 Spring Security 에서 사용하는 사용자 정보인 UserDetails
+		// 를 구현하는 도메인 객체를 만들어서 사용할 필요 있음
 		UserDetails userDetails = new UserDetails() {
 			
 			@Override
@@ -82,5 +89,17 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
 		
 		return userDetails;
 	}
-	
+
+//	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		MemberVo account = mapper.findByUserid(username);
+//		
+//		if (account == null) throw new UsernameNotFoundException(username);
+//		
+//		List<GrantedAuthority> authorities = new ArrayList<>();
+//		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+//		
+//		// UserDetails 를 구현하는 객체
+//		return new User(account.getUserid(), account.getUserpw(), authorities);
+//	}
 }

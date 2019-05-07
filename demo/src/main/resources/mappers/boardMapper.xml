@@ -21,7 +21,7 @@
 	)
 	</insert>
 
-	<select id="read" resultType="BoardVO">
+	<select id="read" resultType="com.roh.domain.BoardVo">
 	SELECT 
 		bno
 		,title
@@ -56,7 +56,7 @@
 	 	bno = #{bno}
 	</delete>
 	
-	<select id="listAll" parameterType="Criteria" resultType="BoardVo">
+	<select id="listAll" parameterType="com.roh.domain.Criteria" resultType="com.roh.domain.BoardVo">
 	SELECT
 		bno
 		,title
