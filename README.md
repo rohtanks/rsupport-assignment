@@ -1,4 +1,4 @@
-# rsupport-assignment
+# 빌드 및 실행
 
 빌드 및 실행 방법에 대한 설명입니다.
 
