@@ -34,6 +34,8 @@ public class BoardController {
 		model.addAttribute("msg", "환영합니다");
 	}
 	
+	// 브랜치 테스트용 주석 추가
+	
 	@GetMapping("post")
 	public void registGet() {
 		logger.info("called registGet()..");
