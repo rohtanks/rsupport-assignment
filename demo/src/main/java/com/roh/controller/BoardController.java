@@ -136,4 +136,7 @@ public class BoardController {
 		
 		return "redirect:/boards";
 	}
+	
+	// 주석 추가
+	
 }
